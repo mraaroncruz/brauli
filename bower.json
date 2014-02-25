@@ -1,0 +1,19 @@
+{
+  "name": "brauli",
+  "version": "0.0.0",
+  "authors": [
+    "Aaron Cruz <aaron@aaroncruz.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/js/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fastclick": "~1.0.0"
+  }
+}
