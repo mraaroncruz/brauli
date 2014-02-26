@@ -1,0 +1,19 @@
+<!-- 
+  This template gets placed in the Brewery tab's <ion-nav-view> directive.
+  It was wired up in the app config (app.js) 
+  The 'brewerys' data comes from its $scope within BreweryIndexCtrl (controller.js)
+-->
+<ion-view title="'Brauli'">
+  <ion-content has-header="true" has-tabs="true">
+
+    <ion-list>
+
+      <ion-item ng-repeat="brewery in breweries" type="item-text-wrap" href="#/tab/brewery/{{brewery.id}}">
+        <h3>{{brewery.name}}</h3>
+        <p>{{brewery.address}}</p>
+      </ion-item>
+      
+    </ion-list>
+
+  </ion-content>
+</ion-view>

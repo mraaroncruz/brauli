@@ -1,0 +1,8 @@
+---
+slides:
+- slide:
+    commit: 489c212712455eea6acea92ac6d6c01636ee606e
+    message: Ionic app initialized
+- slide:
+    commit: 0cfea82c1b78ad6b2953cb59a912d97789c85925
+    message: Added fastclick
