@@ -5,21 +5,29 @@ angular.module('starter.controllers', [])
 .controller('BreweryIndexCtrl', function($scope, Brewery) {
   $scope.breweries = []
 
+  $scope.currentLocation = {
+    latitude: 48.288158,
+    longitude: 16.308020
+  }
+
+  var initBreweries = function () {
+    Brewery.allFromCurrentLocation().then(function (data) {
+        $scope.currentLocation = data[0];
+        $scope.breweries = data[1];
+      }
+    );
+  }
+
   // "Breweries" is a service returning mock data (services.js)
   var updateBreweries = function (center) {
-    Brewery.all_with_geo(center).then(function (data) {
+    Brewery.allFromCoords(center).then(function (data) {
         $scope.currentLocation = data[0];
         $scope.breweries = data[1];
       }
     );
   };
 
-  updateBreweries();
-
-  $scope.currentLocation = {
-    latitude: 48.288158,
-    longitude: 16.308020
-  }
+  initBreweries();
 
   var getBreweries = function () {
     return $scope.breweries;
@@ -52,7 +60,6 @@ angular.module('starter.controllers', [])
           latitude: e.center.d,
           longitude: e.center.e
         };
-        console.log("new center", center);
         $scope.currentLocation = center;
         updateBreweries(center);
       }
@@ -65,4 +72,16 @@ angular.module('starter.controllers', [])
 .controller('BreweryDetailCtrl', function($scope, $stateParams, Brewery) {
   // "Brewerys" is a service returning mock data (services.js)
   $scope.brewery = Brewery.get($stateParams.breweryId);
+
+  $scope.map = {
+    center: $scope.brewery,
+    zoom: 12,
+    options: {
+      scaleControl: false,
+      streetViewControl: false,
+      zoomControl: false,
+      mapTypeControl: false
+    },
+    marker: $scope.brewery
+  };
 });
